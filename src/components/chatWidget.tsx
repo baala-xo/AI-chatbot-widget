@@ -2,8 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function ChatWidget() {
-  const [open, setOpen] = useState(false);
+export default function ChatWidget({ isOpen, setOpenChat }) {
+  // Use external state if provided, otherwise fall back to internal state
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = isOpen !== undefined ? isOpen : internalOpen;
+  const setOpen = setOpenChat !== undefined ? setOpenChat : setInternalOpen;
+
   const [msg, setMsg] = useState("");
   const [chat, setChat] = useState<{ role: string; content: string }[]>([]);
   const [isTyping, setIsTyping] = useState(false);

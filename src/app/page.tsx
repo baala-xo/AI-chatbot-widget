@@ -8,6 +8,11 @@ import { SiNextdotjs, SiReact, SiRedis, SiOpenai } from "react-icons/si";
 export default function LandingPage() {
   const [openChat, setOpenChat] = useState(false);
 
+  const handleTryChatbot = () => {
+    setOpenChat(true);
+    console.log('Chat opened:', true); // Debug log
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-white text-gray-800 relative">
       <main className="max-w-4xl mx-auto px-4 py-20 flex flex-col items-center text-center">
@@ -20,7 +25,7 @@ export default function LandingPage() {
 
         <div className="flex gap-4 mb-10">
           <button
-            onClick={() => setOpenChat(true)}
+            onClick={handleTryChatbot}
             className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition"
           >
             Try the Chatbot
@@ -35,8 +40,7 @@ export default function LandingPage() {
         </div>
 
         <section className="text-left w-full">
-             <div className="flex flex-wrap justify-center items-center gap-10 text-5xl text-gray-700 pt-10">
-            
+          <div className="flex flex-wrap justify-center items-center gap-10 text-5xl text-gray-700 pt-10">
             <div className="flex flex-col items-center text-s">
               <SiNextdotjs className="text-black" />
               <span className="text-sm pt-5">Next.js</span>
@@ -51,17 +55,14 @@ export default function LandingPage() {
             </div>
             <div className="flex flex-col items-center text-s">
               <SiRedis className="text-red-600" />
-              <span className="text-sm pt-5" >Upstash Redis</span>
+              <span className="text-sm pt-5">Upstash Redis</span>
             </div>
           </div>
-          
-          
-          
         </section>
       </main>
 
-      {/* Floating Chat Widget */}
-      {openChat && <ChatWidget />}   
+      {/* Chat Widget - always rendered but visibility controlled */}
+      <ChatWidget isOpen={openChat} setOpenChat={setOpenChat} />
     </div>
   );
 }
