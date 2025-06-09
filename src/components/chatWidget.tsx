@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function ChatWidget({ isOpen, setOpenChat }) {
+interface ChatWidgetProps {
+  isOpen?: boolean;
+  setOpenChat?: (open: boolean) => void;
+}
+
+export default function ChatWidget({ isOpen, setOpenChat }: ChatWidgetProps) {
   // Use external state if provided, otherwise fall back to internal state
   const [internalOpen, setInternalOpen] = useState(false);
   const open = isOpen !== undefined ? isOpen : internalOpen;
