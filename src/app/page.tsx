@@ -31,7 +31,7 @@ export default function LandingPage() {
             Try the Chatbot
           </button>
           <Link
-            href="https://github.com/your-repo/chat-widget#usage"
+            href="https://github.com/baala-xo/AI-chatbot-widget"
             target="_blank"
             className="border border-black px-6 py-3 rounded-lg hover:bg-gray-100 transition"
           >
